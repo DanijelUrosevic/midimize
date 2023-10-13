@@ -927,7 +927,7 @@
       const downloadFile = document.querySelector(".playing");
 
       function downloadMidi() {
-        if (!lastMidiData) {
+        if (lastMidiData.length == 0) {
           $.notify("Please generate midi files.", "warn");
           return;
         }
