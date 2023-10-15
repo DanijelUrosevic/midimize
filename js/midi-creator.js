@@ -542,7 +542,8 @@ class MidiCreator {
     this.soundToNote = function () {
       this.resetMidi();
       let bufferSize = this.waveformArray.length;
-      let max = bufferSize - 1;
+      // let max = bufferSize - 1;
+      let max = 270000;
       let chunkSize = this.getChunkSize();
       let start = 0;
       let end = 0;
