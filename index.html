@@ -41,12 +41,6 @@
       input {
         transition: 200ms;
       }
-      .notifyjs-bootstrap-base {
-        font-size: 1.8em;
-        font-weight: 500 !important;
-        line-height: 0.6em;
-        padding: 10px 10px 10px 30px !important;
-      }
     </style>
     <style type="text/css">
       body {
@@ -927,11 +921,6 @@
       const downloadFile = document.querySelector(".playing");
 
       function downloadMidi() {
-        if (lastMidiData.length == 0) {
-          $.notify("Please generate midi files.", "warn");
-          return;
-        }
-
         let zip = new JSZip();
 
         // Add files to the zip
@@ -980,7 +969,7 @@
               resolve("loaded");
             });
           });
-          $.notify(`progress - ${progress}%`, "info");
+          $.notify(`progress - ${progress}%`, "done");
         }
         $.notify("Successfully generated!", "success");
       }
@@ -1030,10 +1019,8 @@
                 file.name
               }<br>file size ${returnFileSize(file.size)}<br>`;
               console.log(URL.createObjectURL(file));
-              $.notify("File uploaded!", "success");
             } else {
               preview.innerHTML = `File name ${file.name}<br>Not a valid file type. Update your selection<br>`;
-              $.notify("Not a valid file type. Update your selection", "warn");
             }
           }
         }
