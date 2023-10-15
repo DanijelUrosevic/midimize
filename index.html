@@ -41,6 +41,12 @@
       input {
         transition: 200ms;
       }
+      .notifyjs-bootstrap-base {
+        font-size: 1.8em;
+        font-weight: 500 !important;
+        line-height: 0.6em;
+        padding: 10px 10px 10px 30px !important;
+      }
     </style>
     <style type="text/css">
       body {
@@ -921,6 +927,11 @@
       const downloadFile = document.querySelector(".playing");
 
       function downloadMidi() {
+        if (lastMidiData.length == 0) {
+          $.notify("Please generate midi files.", "warn");
+          return;
+        }
+
         let zip = new JSZip();
 
         // Add files to the zip
@@ -969,7 +980,7 @@
               resolve("loaded");
             });
           });
-          $.notify(`progress - ${progress}%`, "done");
+          $.notify(`progress - ${progress}%`, "info");
         }
         $.notify("Successfully generated!", "success");
       }
