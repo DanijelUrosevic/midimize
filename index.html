@@ -911,19 +911,22 @@
             var container = new DataTransfer();
             container.items.add(file);
             fileInput.files = container.files;
-            // window.alert("Converted and Uploaded successfully")
           }
         };
         xhr.send();
         updateFile()
       } catch (error) {
         console.error(error);
-        window.alert("Oops!")
+        $.notify("Oops!", "info");
       }
     }
     $("form#youtubeForm").submit(function () {
       let ytl = $('input#youtubeLink').val();
       var audio_tag = $('#audio')[0];
+      if(!youtube_parser(ytl)) {
+        $.notify("Invalid URL", "info");
+        return false;
+      }
       converter(ytl)
       return false;
     });
