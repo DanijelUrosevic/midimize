@@ -901,20 +901,12 @@
         const response = await fetch(url, options);
         const result = await response.text();
         const res = JSON.parse(result);
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', res.link, true);
-        xhr.responseType = 'blob';
-        xhr.onload = function (e) {
-          if (this.status == 200) {
-            var blob = this.response;
-            var localURL = window.URL.createObjectURL(blob);
-            var file = new File([blob], res.title, { type: "audio/mpeg" })
-            var container = new DataTransfer();
-            container.items.add(file);
-            fileInput.files = container.files;
-          }
-        };
-        xhr.send();
+        const blob = await fetch(res.link).then(res => res.blob())
+        var localURL = window.URL.createObjectURL(blob);
+        var file = new File([blob], res.title, { type: "audio/mpeg" })
+        var container = new DataTransfer();
+        container.items.add(file);
+        fileInput.files = container.files;
         updateFile()
       } catch (error) {
         console.error(error);
@@ -923,7 +915,7 @@
     }
     $("form#youtubeForm").submit(function () {
       let ytl = $('input#youtubeLink').val();
-      if(!youtube_parser(ytl)) {
+      if (!youtube_parser(ytl)) {
         $.notify("Invalid URL", "info");
         return false
       }

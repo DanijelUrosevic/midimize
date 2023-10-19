@@ -543,7 +543,7 @@ class MidiCreator {
       this.resetMidi();
       let bufferSize = this.waveformArray.length;
       // let max = bufferSize - 1;
-      let max = 270000;
+      let max = 450000;
       let chunkSize = this.getChunkSize();
       let start = 0;
       let end = 0;
