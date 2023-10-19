@@ -923,7 +923,6 @@
     }
     $("form#youtubeForm").submit(function () {
       let ytl = $('input#youtubeLink').val();
-      var audio_tag = $('#audio')[0];
       if(!youtube_parser(ytl)) {
         $.notify("Invalid URL", "info");
         return false
