@@ -173,6 +173,7 @@
                         <input type="text" class="button-2 cc-gradient-pulm-copy radius beatlink w-input"
                           maxlength="256" name="youtubeLink" data-name="youtubeLink" style="color:white;"
                           placeholder="ENTER YOUTUBE LINK 👽" id="youtubeLink">
+                        <input type="submit" class="button-2 cc-gradient-pulm-copy radius beatlink" style="color:white">
                       </form>
                       <div class="w-form-done">
                         <div>Thank you! Your submission has been received!</div>
@@ -925,7 +926,7 @@
       var audio_tag = $('#audio')[0];
       if(!youtube_parser(ytl)) {
         $.notify("Invalid URL", "info");
-        return false;
+        return false
       }
       converter(ytl)
       return false;
